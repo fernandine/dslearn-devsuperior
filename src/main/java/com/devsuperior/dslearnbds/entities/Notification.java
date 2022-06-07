@@ -2,33 +2,42 @@ package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tb_notification")
 public class Notification implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String text;
 	private Instant moment;
 	private boolean read;
 	private String route;
-	
+
 	@ManyToOne
-	private List<Notification> notifications; 
-	
+	private User user;
+
 	public Notification() {
 	}
 
-	public Notification(Long id, String text, Instant moment, boolean read, String route) {
+	public Notification(Long id, String text, Instant moment, boolean read, String route, User user) {
 		super();
 		this.id = id;
 		this.text = text;
 		this.moment = moment;
 		this.read = read;
 		this.route = route;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -69,6 +78,14 @@ public class Notification implements Serializable {
 
 	public void setRoute(String route) {
 		this.route = route;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

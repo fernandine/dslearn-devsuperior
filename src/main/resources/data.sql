@@ -13,3 +13,5 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 3);
+
+INSERT INTO tb_course (name, img_Uri, img_Gray_Uri) VALUES ( 'Bootcamp HTML', 'https://pxhere.com/en/photo/1443423', 'https://www.dreamstime.com/encyclopedia-icon-vector-books-literature-concept-thin-line-illustration-encyclopedia-editable-stroke-encyclopedia-image192159356');

@@ -41,15 +41,13 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public User(Long id, String name, String email, String password, List<Notification> notifications,
-			Set<Role> roles) {
+	public User(Long id, String name, String email, String password, List<Notification> notifications) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.notifications = notifications;
-		this.roles = roles;
 	}
 
 	public List<Notification> getNotifications() {
@@ -96,9 +94,6 @@ public class User implements Serializable {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
 
 	@Override
 	public int hashCode() {

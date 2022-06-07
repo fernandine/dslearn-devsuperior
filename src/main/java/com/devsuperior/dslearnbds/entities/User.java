@@ -29,7 +29,7 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user_id")
+	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications;
 
 	@ManyToMany(fetch = FetchType.EAGER)

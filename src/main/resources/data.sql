@@ -14,8 +14,12 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 3);
 
-INSERT INTO tb_course (name, img_Uri, img_Gray_Uri) VALUES ( 'Bootcamp HTML', 'https://pxhere.com/en/photo/1443423', 'https://www.dreamstime.com/encyclopedia-icon-vector-books-literature-concept-thin-line-illustration-encyclopedia-editable-stroke-encyclopedia-image192159356');
+INSERT INTO tb_course (name, img_Uri, img_Gray_Uri) VALUES ( 'Bootcamp HTML', 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkNTZiYXRjaDctZXllLWpvYjU5OC5qcGc.jpg', 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvdjExNDctYmctMDEtMi1rem93MTJwNi5qcGc.jpg');
 
-INSERT INTO tb_offer (edition, start_Moment, end_Moment, couse_id) VALUES ('1.0', 'TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00Z', 'TIMESTAMP WITH TIME ZONE '2021-11-20T03:00:00Z', 1 );
-INSERT INTO tb_offer (edition, start_Moment, end_Moment, couse_id) VALUES ('2.0', 'TIMESTAMP WITH TIME ZONE '2020-12-20T03:00:00Z', 'TIMESTAMP WITH TIME ZONE '2021-12-20T03:00:00Z', 1 );
+INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('1.0', TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00Z', TIMESTAMP WITH TIME ZONE '2021-11-20T03:00:00Z', 1 );
+INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('2.0', TIMESTAMP WITH TIME ZONE '2020-12-20T03:00:00Z', TIMESTAMP WITH TIME ZONE '2021-12-20T03:00:00Z', 1 );
+
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Trilha HTML', 'Trilha principal do curso', 1, 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkNTZiYXRjaDctZXllLWpvYjU5OC5qcGc.jpg', 1, 1);
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Forum', 'Tire suas dúvidas', 2, 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkNTZiYXRjaDctZXllLWpvYjU5OC5qcGc.jpg', 2, 1);
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives exclusivas para a turma', 3, 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkNTZiYXRjaDctZXllLWpvYjU5OC5qcGc.jpg', 0, 1);
 

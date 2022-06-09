@@ -74,6 +74,7 @@ public class Course implements Serializable {
 	public void setImgGrayUri(String imgGrayUri) {
 		this.imgGrayUri = imgGrayUri;
 	}
+	
 
 	@Override
 	public int hashCode() {

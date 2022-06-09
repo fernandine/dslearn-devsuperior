@@ -1,6 +1,7 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +39,7 @@ public class User implements UserDetails, Serializable {
 	private String password;
 
 	@OneToMany(mappedBy = "user")
-	private List<Notification> notifications;
+	private List<Notification> notifications = new ArrayList<>();
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",

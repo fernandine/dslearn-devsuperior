@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,20 +31,19 @@ public class User implements UserDetails, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
 	private String name;
 	private String email;
 	private String password;
-
-	@OneToMany(mappedBy = "user")
-	private List<Notification> notifications = new ArrayList<>();
-
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
-	joinColumns = @JoinColumn(name = "user_id"),
-	inverseJoinColumns = @JoinColumn(name = "role_id"))
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "role_id"))	
 	private Set<Role> roles = new HashSet<>();
-
+	
+	@OneToMany(mappedBy = "user")
+	private List<Notification> notifications = new ArrayList<>();
+	
 	public User() {
 	}
 
@@ -56,14 +53,6 @@ public class User implements UserDetails, Serializable {
 		this.name = name;
 		this.email = email;
 		this.password = password;
-	}
-
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
-
-	public void setNotifications(List<Notification> notifications) {
-		this.notifications = notifications;
 	}
 
 	public Long getId() {
@@ -102,9 +91,16 @@ public class User implements UserDetails, Serializable {
 		return roles;
 	}
 
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -116,12 +112,18 @@ public class User implements UserDetails, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
+		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority()))
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -147,15 +149,14 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public boolean isEnabled() {
 		return true;
-	}
+	}	
 	
 	public boolean hasHole(String roleName) {
 		for (Role role : roles) {
-			if(role.getAuthority().equals(roleName)) {
+			if (role.getAuthority().equals(roleName)) {
 				return true;
 			}
 		}
 		return false;
-	}
-
+	}	
 }
